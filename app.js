@@ -20,11 +20,5 @@ app.controller('myCtrl', function($scope, $http) {
       $scope.todos = response.data;
     });
   };
-  //console.log($scope.userId);
-
-  // $http.get('https://jsonplaceholder.typicode.com/todos')
-  //   .then(function (response) {
-  //     $scope.todos = response.data;
-  //   });
 
 });
