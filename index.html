@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com"> 
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&display=swap" >
+  <link rel="stylesheet" href="style.css">
+  <title>Arbetsuppgifter</title>
+</head>
+<body ng-app="myApp" ng-controller="myCtrl">
+  <div class="container">
+
+    <div class="sidebar">
+        <h2>Användare</h2>
+        <select ng-model="selectedUser" ng-change="myFunc()" ng-options="user.name for user in users">
+        </select>
+        <!-- <p ng-show="selectedUser">Du valde användare "{{ selectedUser.name }}" med id "{{ selectedUser.id }}"</p> -->
+    </div><!--end .sidebar-->
+
+    <div class="main">
+      {{ firstName + " " + lastName }}
+      <h2>Att göra-lista</h2>
+      <div class="table-container">
+        <table id="table-todo">
+          <thead>
+            <tr>
+              <th>Slutförd</th>
+              <th>Titel</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-show="selectedUser" ng-repeat="x in todos">
+              <td><input type="checkbox" name="{{ x.id }}" id="{{ x.id }}" ng-checked="{{ x.completed }}"></td>
+              <td><label for="{{ x.id }}">{{ x.title }}</label></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div><!--end .main-->
+
+  </div>
+  <script src="app.js"></script>
+  
+</body>
+</html>
